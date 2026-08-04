@@ -321,6 +321,50 @@ header.site{
 .on-navy .instructor-photo{border-color:rgba(246,241,233,.16)}
 .on-navy .stack-list li{border-bottom-color:rgba(246,241,233,.16)}
 
+/* ---------- Logo marquee (empresas já aceleradas) ---------- */
+.logo-marquee-section{padding:28px 0}
+.logo-marquee{
+  overflow:hidden; position:relative; width:100%;
+  mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.logo-marquee-track{
+  display:flex; align-items:center; gap:48px; width:max-content;
+  animation:logoMarquee 28s linear infinite;
+}
+.logo-marquee:hover .logo-marquee-track{animation-play-state:paused}
+.logo-tile{
+  height:40px; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:0 4px;
+}
+.logo-tile img{max-height:100%; max-width:120px; object-fit:contain; filter:grayscale(1); opacity:.7; transition:filter .15s ease, opacity .15s ease}
+.logo-tile:hover img{filter:grayscale(0); opacity:1}
+.logo-tile.placeholder{
+  width:120px; color:var(--steel-light); font-family:var(--font-mono); font-size:11px;
+  text-align:center; border:1px dashed var(--border); border-radius:var(--r-md);
+}
+@keyframes logoMarquee{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+@media (prefers-reduced-motion: reduce){
+  .logo-marquee-track{animation:none}
+  .logo-marquee{overflow-x:auto}
+}
+
+/* ---------- Depoimentos ---------- */
+.testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+@media (max-width:880px){.testi-grid{grid-template-columns:1fr}}
+.testi-card{
+  background:var(--white); border:1px solid var(--border); border-radius:var(--r-lg);
+  padding:24px; display:flex; flex-direction:column; gap:16px; min-height:200px;
+}
+.testi-card .quote-mark{font-family:var(--font-display); font-size:36px; color:var(--orange); line-height:1; opacity:.5}
+.testi-card p.quote{font-size:15px; color:var(--ink); line-height:1.6; flex:1}
+.testi-card .who{display:flex; align-items:center; gap:10px}
+.testi-card .avatar{width:36px; height:36px; border-radius:50%; background:var(--paper); border:1px solid var(--border); flex-shrink:0}
+.testi-card .who .name{font-size:13.5px; font-weight:600; color:var(--ink)}
+.testi-card .who .role{font-size:12px; color:var(--steel)}
+
 /* ---------- FAQ ---------- */
 .faq-list{max-width:760px}
 .faq-item{border-bottom:1px solid var(--border)}
@@ -444,7 +488,7 @@ footer.site small{font-family:var(--font-mono); font-size:11px}
       <div class="eyebrow">apenas 20 vagas</div>
       <h1><b>Formação AI GTM Engineer:</b> prepare-se para o cargo que mais cresceu no último ano<span class="accent">.</span></h1>
       <p class="sub">
-        Domine as principais ferramentas de Go-To-Market orquestradas pelo Claude Code.
+        Domine as principais ferramentas de Go-To-Market orquestradas pelo Claude Code. Os melhores alunos são <b>indicados direto a recrutadores</b> de GTM Engineer no Brasil e no exterior.
       </p>
       <div class="hero-ctas">
         <a href="#form" class="btn btn-primary">Reservar Minha Vaga</a>
@@ -478,11 +522,36 @@ footer.site small{font-family:var(--font-mono); font-size:11px}
   </div>
 </section>
 
+<!-- ============ EMPRESAS JÁ ACELERADAS ============ -->
+<section class="section logo-marquee-section rule" id="empresas">
+  <div class="container">
+    <p class="reveal" style="text-align:center; font-size:13px; color:var(--steel); margin-bottom:16px">Mais de 50 empresas já confiam nessa metodologia.</p>
+    <div class="logo-marquee reveal">
+      <div class="logo-marquee-track">
+        <!-- TODO: substituir pelos logos reais quando Yuri enviar a lista -->
+        <span class="logo-tile placeholder">logo</span>
+        <span class="logo-tile placeholder">logo</span>
+        <span class="logo-tile placeholder">logo</span>
+        <span class="logo-tile placeholder">logo</span>
+        <span class="logo-tile placeholder">logo</span>
+        <span class="logo-tile placeholder">logo</span>
+        <!-- cópia duplicada, pro loop contínuo sem salto -->
+        <span class="logo-tile placeholder" aria-hidden="true">logo</span>
+        <span class="logo-tile placeholder" aria-hidden="true">logo</span>
+        <span class="logo-tile placeholder" aria-hidden="true">logo</span>
+        <span class="logo-tile placeholder" aria-hidden="true">logo</span>
+        <span class="logo-tile placeholder" aria-hidden="true">logo</span>
+        <span class="logo-tile placeholder" aria-hidden="true">logo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ DOR ============ -->
 <section class="section tight rule" id="dor">
   <div class="container">
     <div class="section-head reveal">
-      <div class="eyebrow">o problema real</div>
+      <div class="eyebrow">o que é o gtm engineer?</div>
       <h2>Um cargo nascido na era da IA que pouca gente conhece de verdade<span class="accent">.</span></h2>
       <p class="lede">Muita informação, pouco conhecimento e menos ainda, aplicado na prática.</p>
     </div>
@@ -624,6 +693,43 @@ footer.site small{font-family:var(--font-mono); font-size:11px}
           <li><span class="chk"><svg viewBox="0 0 12 12" fill="none" stroke="#E8540C" stroke-width="1.6"><path d="M2 6l3 3 5-6"/></svg></span>Engenheiro de formação (Ecole Centrale Nantes), pós-graduação em IA e Deep Learning (UPC Barcelona) e empreendedorismo em Stanford (Stanford Ignite)</li>
           <li><span class="chk"><svg viewBox="0 0 12 12" fill="none" stroke="#E8540C" stroke-width="1.6"><path d="M2 6l3 3 5-6"/></svg></span>Constrói sistemas de GTM em produção, gerando leads todos os dias para médias e grandes empresas</li>
         </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOCIAL PROOF / DEPOIMENTOS ============ -->
+<section class="section rule" id="depoimentos">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">quem já testou o mecanismo</div>
+      <h2>Não é só teoria. É o que quem já usou tem a dizer<span class="accent">.</span></h2>
+    </div>
+    <div class="testi-grid reveal">
+      <!-- TODO: substituir pelos depoimentos reais (Yuri envia) -->
+      <div class="testi-card">
+        <span class="quote-mark">"</span>
+        <p class="quote">[Depoimento a inserir]</p>
+        <div class="who">
+          <span class="avatar"></span>
+          <div><div class="name">Nome Sobrenome</div><div class="role">Cargo · Empresa</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <span class="quote-mark">"</span>
+        <p class="quote">[Depoimento a inserir]</p>
+        <div class="who">
+          <span class="avatar"></span>
+          <div><div class="name">Nome Sobrenome</div><div class="role">Cargo · Empresa</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <span class="quote-mark">"</span>
+        <p class="quote">[Depoimento a inserir]</p>
+        <div class="who">
+          <span class="avatar"></span>
+          <div><div class="name">Nome Sobrenome</div><div class="role">Cargo · Empresa</div></div>
+        </div>
       </div>
     </div>
   </div>
