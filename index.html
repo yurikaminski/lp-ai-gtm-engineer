@@ -233,31 +233,46 @@ header.site{
 }
 .frame-layer{border-radius:var(--r-lg); display:block}
 .frame-layer.frame-base{width:100%; height:auto; opacity:1; animation:frameBase 4s ease-in-out infinite}
-.frame-layer.frame-intermediate, .frame-layer.frame-final{position:absolute; inset:0; width:100%; height:100%; opacity:0}
+.frame-layer.frame-intermediate, .frame-layer.frame-final, .frame-layer.frame-row2-intermediate, .frame-layer.frame-row2-final{position:absolute; inset:0; width:100%; height:100%; opacity:0}
 .frame-layer.frame-intermediate{animation:frameIntermediate 4s ease-in-out infinite}
 .frame-layer.frame-final{animation:frameFinal 4s ease-in-out infinite}
+.frame-layer.frame-row2-intermediate{animation:frameRow2Intermediate 4s ease-in-out infinite}
+.frame-layer.frame-row2-final{animation:frameRow2Final 4s ease-in-out infinite}
 @keyframes frameBase{
-  0%, 27%{opacity:1}
-  33%{opacity:0}
-  90%{opacity:0}
+  0%, 10%{opacity:1}
+  16%{opacity:0}
+  96%{opacity:0}
   100%{opacity:1}
 }
+@keyframes frameRow2Intermediate{
+  0%, 10%{opacity:0}
+  16%, 24%{opacity:1}
+  30%{opacity:0}
+  100%{opacity:0}
+}
+@keyframes frameRow2Final{
+  0%, 24%{opacity:0}
+  30%, 38%{opacity:1}
+  44%{opacity:0}
+  100%{opacity:0}
+}
 @keyframes frameIntermediate{
-  0%, 27%{opacity:0}
-  33%, 50%{opacity:1}
+  0%, 38%{opacity:0}
+  44%, 52%{opacity:1}
   58%{opacity:0}
   100%{opacity:0}
 }
 @keyframes frameFinal{
-  0%, 50%{opacity:0}
+  0%, 52%{opacity:0}
   58%, 90%{opacity:1}
+  96%{opacity:0}
   100%{opacity:0}
 }
 @media (prefers-reduced-motion: reduce){
   .flow-dot, .flow-pulse{animation:none; opacity:0}
   .frame-layer{animation:none}
   .frame-layer.frame-base{opacity:1}
-  .frame-layer.frame-intermediate, .frame-layer.frame-final{opacity:0; position:absolute}
+  .frame-layer.frame-intermediate, .frame-layer.frame-final, .frame-layer.frame-row2-intermediate, .frame-layer.frame-row2-final{opacity:0; position:absolute}
 }
 
 /* ---------- Stack ---------- */
@@ -606,6 +621,8 @@ footer.site small{font-family:var(--font-mono); font-size:11px}
 
       <div class="diagram-flow reveal">
         <img class="frame-layer frame-base" src="assets/mecanismo-frame-base.png" alt="Apify, Instantly, Nuvia e Clay alimentando 4 agentes de IA (Strategy, Data, Copywriting, Analyst), tudo orquestrado pelo Claude Code">
+        <img class="frame-layer frame-row2-intermediate" src="assets/mecanismo-frame-l1-intermediario.png" alt="">
+        <img class="frame-layer frame-row2-final" src="assets/mecanismo-frame-l1-final.png" alt="">
         <img class="frame-layer frame-intermediate" src="assets/mecanismo-frame-intermediario.png" alt="">
         <img class="frame-layer frame-final" src="assets/mecanismo-frame-final.png" alt="">
         <!-- linha de baixo: agentes <-> claude code (converge primeiro) -->
